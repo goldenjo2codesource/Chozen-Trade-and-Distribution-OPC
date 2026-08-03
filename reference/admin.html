@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Chozen Resources Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="CRI Logo.jpg" alt="CRI Logo">
+        <span class="brand-name">Chozen Resources Inc.<small>Admin Panel</small></span>
+      </a>
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="event.preventDefault();document.getElementById('appSearchInput')&&(document.getElementById('appSearchInput').value=this.querySelector('input').value,filterApps());">
+          <input class="header-search-input" type="search" placeholder="Search applications…" autocomplete="off">
+          <button class="header-search-btn" type="submit" aria-label="Search">🔍</button>
+        </form>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a class="active" href="admin.html" data-dash-link>Admin</a>
+        <a href="login.html" data-auth-link>Logout</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ========== MAIN DASHBOARD ========== -->
+  <div class="dash-page" id="adminWrap">
+    <div class="dash-inner">
+
+      <div class="dash-header">
+        <div>
+          <p class="eyebrow">Admin Dashboard</p>
+          <h1>Chozen Resources Inc.</h1>
+          <p>Manage applications, jobs, and applicants.</p>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid" style="cursor:pointer;">
+        <div class="stat-box" onclick="quickFilter('')" title="Show all applications"><span class="stat-num" id="stat-applicants">—</span><span class="stat-label">Total Registered</span></div>
+        <div class="stat-box" onclick="quickFilter('')" title="Show all applications"><span class="stat-num" id="stat-applications">—</span><span class="stat-label">Total Applications</span></div>
+        <div class="stat-box green" onclick="quickFilter('month')" title="Show this month"><span class="stat-num" id="stat-month">—</span><span class="stat-label">This Month</span></div>
+        <div class="stat-box gold" onclick="switchTab('jobs')" title="View job listings"><span class="stat-num" id="stat-jobs">—</span><span class="stat-label">Active Job Listings</span></div>
+      </div>
+      <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:32px;cursor:pointer;">
+        <div class="stat-box gold" onclick="quickFilter('Pending')" title="Show Pending"><span class="stat-num" id="stat-pending">—</span><span class="stat-label">Pending</span></div>
+        <div class="stat-box" onclick="quickFilter('For Interview')" title="Show For Interview"><span class="stat-num" id="stat-interview">—</span><span class="stat-label">For Interview</span></div>
+        <div class="stat-box green" onclick="quickFilter('Hired')" title="Show Hired"><span class="stat-num" id="stat-hired">—</span><span class="stat-label">Hired</span></div>
+        <div class="stat-box red" onclick="quickFilter('Rejected')" title="Show Rejected"><span class="stat-num" id="stat-rejected">—</span><span class="stat-label">Rejected</span></div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:.85rem;color:var(--muted);">Most applied job:</span>
+        <strong id="stat-topjob" style="color:var(--blue);">—</strong>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="applications">Applications</button>
+        <button class="admin-tab-btn" data-tab="jobs">Job Listings</button>
+        <button class="admin-tab-btn" data-tab="addjob">Add Job</button>
+        <button class="admin-tab-btn" data-tab="users">Users</button>
+      </div>
+
+      <!-- ========== APPLICATIONS PANEL ========== -->
+      <div class="admin-tab-panel active" id="panel-applications">
+        <div class="toolbar-actions" style="flex-wrap:wrap;gap:10px;">
+          <input id="appSearchInput" type="search" placeholder="Search by name, job, or status…" oninput="filterApps()" style="flex:1 1 240px;">
+          <select id="appStatusFilter" onchange="filterApps()" style="flex:0 0 180px;">
+            <option value="">All Statuses</option>
+            <option value="Pending">⏳ Pending</option>
+            <option value="For Interview">📅 For Interview</option>
+            <option value="Hired">✅ Hired</option>
+            <option value="Rejected">❌ Rejected</option>
+          </select>
+        </div>
+        <div style="overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);">
+          <div id="adminAppsTable"><p style="padding:20px;color:var(--muted);">Loading…</p></div>
+        </div>
+      </div>
+
+      <!-- ========== JOBS PANEL ========== -->
+      <div class="admin-tab-panel" id="panel-jobs">
+        <div class="toolbar-actions">
+          <div style="position:relative;max-width:320px;flex:1;">
+            <input id="jobSearchAdmin" type="search" placeholder="Search job title…" oninput="filterAdminJobs()" style="padding-right:40px;">
+            <button onclick="loadAdminJobs()" title="Refresh" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:1rem;">↺</button>
+          </div>
+        </div>
+        <div style="overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);margin-bottom:16px;">
+          <div id="adminJobsTable"><p style="padding:20px;color:var(--muted);">Loading…</p></div>
+        </div>
+      </div>
+
+      <!-- ========== ADD JOB PANEL ========== -->
+      <div class="admin-tab-panel" id="panel-addjob">
+        <div class="dash-section">
+          <h2>Add New Job Listing</h2>
+          <form id="newJobForm" onsubmit="addNewJob();return false;">
+            <div class="form-grid" style="gap:16px;">
+              <div class="form-row-2">
+                <div class="form-group"><label>Job Title *</label><input id="new-title" type="text" required placeholder="e.g. Warehouse Staff"></div>
+                <div class="form-group"><label>Location *</label><input id="new-location" type="text" required placeholder="e.g. Cavite, Laguna"></div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group"><label>Job Type *</label>
+                  <select id="new-type" required>
+                    <option value="">Select type</option>
+                    <option>Full-time</option>
+                    <option>Part-time</option>
+                    <option>Contract</option>
+                  </select>
+                </div>
+                <div class="form-group"><label>Salary *</label><input id="new-salary" type="text" required placeholder="e.g. PHP 18,000 - 24,000"></div>
+              </div>
+              <div class="form-group"><label>Job Description *</label><textarea id="new-desc" rows="6" required placeholder="Describe the role, responsibilities, and benefits…"></textarea></div>
+              <div class="form-group"><label>Job Qualifications *</label><textarea id="new-qualifications" rows="4" required placeholder="e.g. At least 2 years experience, must have TOR, physically fit…"></textarea></div>
+              <div class="form-group">
+                <label>Skills / Tags <span style="font-weight:400;color:var(--muted);">(comma separated)</span></label>
+                <input id="new-tags" type="text" placeholder="e.g. Forklift, Safety, Shifting Schedule">
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--gold-lt);border:1px solid #f0d090;border-radius:10px;">
+                <input type="checkbox" id="new-urgent" style="width:18px;height:18px;accent-color:var(--red);cursor:pointer;">
+                <label for="new-urgent" style="cursor:pointer;font-weight:700;font-size:.9rem;color:var(--ink);">🔥 Mark as Urgent Hiring</label>
+              </div>
+            </div>
+            <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+              <button class="btn primary" type="submit">Publish Job Listing</button>
+              <button class="btn ghost" type="button" onclick="previewNewJob()">👁 Preview</button>
+              <p id="newJobMsg" class="message"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ========== USERS PANEL ========== -->
+      <div class="admin-tab-panel" id="panel-users">
+        <div class="dash-section">
+          <h2>Users &amp; Roles</h2>
+          <p style="color:var(--muted);font-size:.9rem;margin-bottom:20px;">Manage all registered users. Promote applicants to Admin or demote Admins to Applicant.</p>
+          <div class="toolbar-actions" style="margin-bottom:16px;">
+            <input id="userSearchInput" type="search" placeholder="Search by name or email…" oninput="filterUsers()" style="max-width:320px;">
+            <select id="userRoleFilter" onchange="filterUsers()" style="max-width:180px;">
+              <option value="">All Roles</option>
+              <option value="applicant">Applicant</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div id="usersList"><p style="color:var(--muted);">Loading…</p></div>
+        </div>
+
+        <!-- Pre-approved Admin Emails -->
+        <div class="dash-section" style="margin-top:24px;">
+          <h2>🔐 Pre-approved Admin Emails</h2>
+          <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">Emails added here will automatically get Admin role when they register. They cannot be demoted or deleted.</p>
+          <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+            <input id="newAdminEmail" type="email" placeholder="staff@chozenresources.com" style="flex:1;max-width:320px;">
+            <button class="btn primary sm" onclick="addAdminEmail()">➕ Add Admin Email</button>
+            <p id="adminEmailMsg" class="message"></p>
+          </div>
+          <div id="adminEmailList"><p style="color:var(--muted);">Loading…</p></div>
+        </div>
+      </div>
+
+    </div><!-- /.dash-inner -->
+  </div><!-- /.dash-page -->
+
+  <!-- ========== VIEW APPLICANT MODAL ========== -->
+  <div class="modal modal-lg" id="viewModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>Applicant Details</h2>
+        <button class="modal-close" onclick="closeViewModal()">✕</button>
+      </div>
+      <div id="viewModalBody"></div>
+      <div style="display:flex;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap;" id="viewModalActions"></div>
+    </div>
+  </div>
+
+  <!-- ========== JOB PREVIEW MODAL ========== -->
+  <div class="modal" id="jobPreviewModal">
+    <div class="modal-box" style="width:min(600px,100%);">
+      <div class="modal-header"><h2>Job Preview</h2><button class="modal-close" onclick="closeJobPreview()">✕</button></div>
+      <div id="jobPreviewBody"></div>
+    </div>
+  </div>
+
+  <!-- ========== EDIT JOB MODAL ========== -->
+  <div class="modal" id="editJobModal">
+    <div class="modal-box" style="width:min(620px,100%);max-height:90vh;overflow-y:auto;">
+      <div class="modal-header"><h2>Edit Job Listing</h2><button class="modal-close" onclick="closeEditJob()">✕</button></div>
+      <form id="editJobForm" onsubmit="saveJobEdit();return false;">
+        <div class="form-grid" style="gap:14px;">
+          <div class="form-row-2">
+            <div class="form-group"><label>Title</label><input id="edit-title" type="text" required></div>
+            <div class="form-group"><label>Location</label><input id="edit-location" type="text" required></div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group"><label>Type</label>
+              <select id="edit-type">
+                <option>Full-time</option>
+                <option>Part-time</option>
+                <option>Contract</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Salary</label><input id="edit-salary" type="text" required></div>
+          </div>
+          <div class="form-group"><label>Job Description</label><textarea id="edit-desc" rows="6"></textarea></div>
+          <div class="form-group"><label>Job Qualifications *</label><textarea id="edit-qualifications" rows="4" required placeholder="e.g. At least 2 years experience, must have TOR, physically fit…"></textarea></div>
+          <div class="form-group"><label>Skills / Tags <span style="font-weight:400;color:var(--muted);">(comma separated)</span></label><input id="edit-tags" type="text" placeholder="e.g. Forklift, Safety, MS Office"></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--gold-lt);border:1px solid #f0d090;border-radius:10px;">
+            <input type="checkbox" id="edit-urgent" style="width:16px;height:16px;accent-color:var(--red);cursor:pointer;">
+            <label for="edit-urgent" style="cursor:pointer;font-weight:700;font-size:.88rem;">🔥 Mark as Urgent Hiring</label>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:18px;">
+          <button class="btn primary" type="submit">Save Changes</button>
+          <button class="btn ghost" type="button" onclick="closeEditJob()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

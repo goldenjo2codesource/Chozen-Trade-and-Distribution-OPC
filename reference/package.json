@@ -1,0 +1,21 @@
+{
+  "name": "chozen-resources-system",
+  "version": "1.0.0",
+  "description": "Chozen Resources Inc. — Manpower & Placement Agency System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^17.4.2",
+    "node-mailjet": "^6.0.11",
+    "nodemailer": "^6.9.13",
+    "pg": "^8.11.3",
+    "resend": "^6.16.0"
+  }
+}

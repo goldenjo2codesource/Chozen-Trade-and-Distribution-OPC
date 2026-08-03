@@ -1,0 +1,23 @@
+# Environment variables — NEVER upload this
+.env
+
+# Node modules
+node_modules/
+
+# Uploaded resumes (too large for git)
+uploads/*.pdf
+uploads/*.doc
+uploads/*.docx
+
+# Logs
+server.log
+server.err
+*.log
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Installer files
+*.exe
+*.msi

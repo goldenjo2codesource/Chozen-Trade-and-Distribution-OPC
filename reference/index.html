@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chozen Resources Inc. | Trusted Manpower & Career Placement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="CRI Logo.jpg" alt="CRI Logo">
+        <span class="brand-name">Chozen Resources Inc.<small>Manpower & Placement Agency</small></span>
+      </a>
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="headerSearch(event)">
+          <input class="header-search-input" type="search" id="headerSearchInput" placeholder="Search jobs, roles, locations…" autocomplete="off">
+          <button class="header-search-btn" type="submit" aria-label="Search">🔍</button>
+        </form>
+      </div>
+      <nav class="site-nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Trusted Manpower & Career Placement</p>
+        <h1>Find work that fits your skills and future.</h1>
+        <p class="lead">Chozen Resources Inc. connects skilled applicants with verified employers across manufacturing, construction, and operations — fast, reliable, and professional.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="jobs.html">Browse Open Jobs</a>
+          <a class="btn ghost" href="register.html">Create Free Account</a>
+        </div>
+        <p style="margin-top:14px;font-size:.83rem;color:rgba(255,255,255,.55);">Already have an account? <a href="login.html" style="color:rgba(255,255,255,.8);font-weight:700;text-decoration:underline;">Login here</a></p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="num">150+</span>
+          <span class="label">Applicants assisted every month</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">24h</span>
+          <span class="label">Fast application review turnaround</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">8+</span>
+          <span class="label">Industries with open positions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="section-inner">
+      <div class="section-hd">
+        <p class="eyebrow">What We Offer</p>
+        <h2>Simple and reliable placement services</h2>
+        <p>We make it easy for applicants to find jobs and for businesses to find the right people.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="feature-icon blue">💼</div>
+          <h3>Job Matching</h3>
+          <p>Browse openings by role, location, and job type — all verified and updated regularly.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon green">🔒</div>
+          <h3>Easy Application</h3>
+          <p>Register once, then apply to any open position. Login only appears when you're ready.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon gold">📋</div>
+          <h3>Hiring Support</h3>
+          <p>All applications are reviewed by our team so we can match you with the right employer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-paper">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+        <div>
+          <p class="eyebrow">How It Works</p>
+          <h2>Apply in three simple steps</h2>
+          <p style="margin-bottom:28px;">No complicated process — just pick a job, create your account, and submit your application.</p>
+          <a class="btn primary" href="jobs.html">See Available Jobs →</a>
+        </div>
+        <div class="steps-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>Choose a job</strong><span>Open the Jobs page and pick a position that fits your skills.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>Login or Register</strong><span>A quick account login appears only when you click Apply.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>Submit Application</strong><span>Fill out the short form and we'll get in touch within 24 hours.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="section-inner">
+      <div class="cta-banner">
+        <div>
+          <h2>Ready to start your new career?</h2>
+          <p>Browse our latest job openings and apply today — it only takes a few minutes.</p>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn primary" href="jobs.html">Browse Jobs</a>
+          <a class="btn ghost" href="register.html">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img src="CRI Logo.jpg" alt="CRI Logo">
+          <strong>Chozen Resources Inc.<small>Manpower & Placement Agency</small></strong>
+        </div>
+        <p class="footer-tagline">Connecting skilled applicants with verified employers across the Philippines since 2022.</p>
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+            <span>
+              <a href="#" onclick="copyPhone('09692420721',this);return false;" title="Click to copy">0969-242-0721</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09474556583',this);return false;" title="Click to copy">0947-455-6583</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09182770167',this);return false;" title="Click to copy">0918-277-0167</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09289822985',this);return false;" title="Click to copy">0928-982-2985</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <span>
+              <a href="mailto:mutyamedalla.schozenresources@gmail.com">mutyamedalla.schozenresources@gmail.com</a><br>
+              <a href="mailto:kyle18.chozenresources@gmail.com">kyle18.chozenresources@gmail.com</a><br>
+              <a href="mailto:lucendo.chozenresources@gmail.com">lucendo.chozenresources@gmail.com</a><br>
+              <a href="mailto:chozenresources@gmail.com">chozenresources@gmail.com</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <a href="https://www.facebook.com/profile.php?id=61583097321288" target="_blank" rel="noopener">Chozen Resources Inc.</a>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="https://www.google.com/maps/search/3F+Quezca+Bldg+Paseo+Square+De+Carmona+Barangay+Maduya+Carmona+Cavite" target="_blank" rel="noopener">3F Quezca Bldg. Paseo Square De Carmona,<br>Brgy. Maduya, Carmona City, Cavite</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="jobs.html">Browse Jobs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Applicants</h4>
+        <ul>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="jobs.html">Apply Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="jobs.html">Manufacturing</a></li>
+          <li><a href="jobs.html">Construction</a></li>
+          <li><a href="jobs.html">Operations</a></li>
+          <li><a href="jobs.html">Admin & Office</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Resources Inc. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge active">✓ DOLE Registered</span>
+          <span class="footer-badge active">✓ SEC Registered</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

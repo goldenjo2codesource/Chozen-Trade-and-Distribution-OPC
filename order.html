@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chozen Trade | Place Inquiry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="ct-topbar">
+      Part of the <strong>Chozen</strong> family of companies &nbsp;·&nbsp;
+      <a href="http://localhost:3001" target="_blank">Visit Chozen Resources Inc. →</a>
+    </div>
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+        <span class="brand-name">Chozen Trade & Distribution<small>From Trade to Transport — We Handle it All</small></span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="order-page">
+    <div class="order-inner">
+      <a class="apply-back" href="products.html" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-weight:700;font-size:.9rem;margin-bottom:20px;">← Back to Products</a>
+      <div class="order-header">
+        <p class="eyebrow">Place Inquiry</p>
+        <h1 id="orderProductTitle">Loading…</h1>
+        <div class="meta" id="orderProductMeta"></div>
+      </div>
+
+      <form id="orderForm">
+        <div class="form-section">
+          <h3>Your Information</h3>
+          <div class="form-grid" style="gap:16px;">
+            <div class="form-row-2">
+              <div class="form-group"><label>Full Name <span style="color:var(--red)">*</span></label><input type="text" name="name" required placeholder="Juan Dela Cruz"></div>
+              <div class="form-group"><label>Email Address <span style="color:var(--red)">*</span></label><input type="email" name="email" required placeholder="buyer@email.com"></div>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group"><label>Mobile Number <span style="color:var(--red)">*</span></label><input type="tel" name="phone" required placeholder="09XXXXXXXXX" maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)"></div>
+              <div class="form-group"><label>Quantity / Volume <span style="color:var(--red)">*</span></label><input type="text" name="quantity" required placeholder="e.g. 10 boxes, 50 kg, 5 units"></div>
+            </div>
+            <div class="form-group"><label>Delivery Address <span style="color:var(--red)">*</span></label><input type="text" name="address" required placeholder="Street, Barangay, City, Province"></div>
+            <div class="form-group"><label>Message / Special Instructions</label><textarea name="message" placeholder="Add any notes about your order here…"></textarea></div>
+          </div>
+        </div>
+
+        <div class="form-section" style="background:#e6f4f4;border-color:#9fd8d8;">
+          <h3 style="color:#085858;">Why order with Chozen Trade?</h3>
+          <ul style="list-style:none;display:grid;gap:8px;">
+            <li style="font-size:.88rem;color:#085858;display:flex;gap:8px;align-items:center;"><span style="color:#0a6e6e;font-weight:900;">✓</span> Free inquiry — no hidden fees</li>
+            <li style="font-size:.88rem;color:#085858;display:flex;gap:8px;align-items:center;"><span style="color:#0a6e6e;font-weight:900;">✓</span> 24-hour response turnaround</li>
+            <li style="font-size:.88rem;color:#085858;display:flex;gap:8px;align-items:center;"><span style="color:#0a6e6e;font-weight:900;">✓</span> Verified products and suppliers</li>
+            <li style="font-size:.88rem;color:#085858;display:flex;gap:8px;align-items:center;"><span style="color:#0a6e6e;font-weight:900;">✓</span> SEC &amp; DTI Registered business</li>
+          </ul>
+        </div>
+
+        <button class="btn primary full" type="submit" style="font-size:.97rem;padding:14px;">Submit Inquiry →</button>
+        <p id="orderMessage" class="message" style="margin-top:12px;text-align:center;"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+          <strong>Chozen Trade & Distribution<small>OPC — Philippines</small></strong>
+        </div>
+        <p class="footer-tagline">"From Trade to Transport — We Handle it All."</p>
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+            <span>
+              <a href="#" onclick="copyPhone('09692420721',this);return false;" title="Click to copy">0969-242-0721</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09474556583',this);return false;" title="Click to copy">0947-455-6583</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <a href="mailto:info@chozentrade.com">info@chozentrade.com</a>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Carmona City, Cavite, Philippines</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="dashboard.html">My Dashboard</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="products.html">Wholesale</a></li>
+          <li><a href="products.html">Retail</a></li>
+          <li><a href="products.html">Industrial</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Trade & Distribution OPC. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge active">✓ SEC Registered</span>
+          <span class="footer-badge active">✓ DTI Registered</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

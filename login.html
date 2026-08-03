@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chozen Trade & Distribution | Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="ct-topbar">
+      Part of the <strong>Chozen</strong> family of companies &nbsp;·&nbsp;
+      <a href="http://localhost:3001" target="_blank">Visit Chozen Resources Inc. →</a>
+    </div>
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+        <span class="brand-name">Chozen Trade & Distribution<small>From Trade to Transport — We Handle it All</small></span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a class="active" href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="auth-page">
+    <div class="auth-wrap">
+      <div class="auth-side">
+        <p class="eyebrow">Buyer Access</p>
+        <h1>Welcome back to Chozen Trade</h1>
+        <p>Login to your account to track your orders and inquire about new products.</p>
+        <ul>
+          <li>Place product inquiries and orders</li>
+          <li>Fast 24-hour response</li>
+          <li>Track your order status</li>
+          <li>Free for all buyers</li>
+        </ul>
+      </div>
+      <div class="auth-box">
+        <h2>Login to Your Account</h2>
+        <p class="form-note" style="margin-bottom:22px;">Use the account you created on this platform.</p>
+        <div style="display:flex;gap:8px;margin-bottom:20px;">
+          <a href="login.html" class="btn primary sm" style="flex:1;text-align:center;">Login</a>
+          <a href="register.html" class="btn ghost sm" style="flex:1;text-align:center;">Create Account</a>
+        </div>
+        <form id="loginForm">
+          <div class="form-grid" style="gap:16px;">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input id="email" type="email" name="email" required placeholder="buyer@email.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div style="position:relative;">
+                <input id="password" type="password" name="password" required placeholder="Enter your password" autocomplete="current-password" style="padding-right:44px;">
+                <button type="button" id="togglePw" onclick="togglePasswordVisibility()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:1.1rem;">👁</button>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.88rem;color:var(--sub);font-weight:600;">
+              <input type="checkbox" id="rememberMe" style="width:16px;height:16px;accent-color:var(--blue);cursor:pointer;">
+              Remember me
+            </label>
+            <a href="#" onclick="openForgotPassword();return false;" style="font-size:.88rem;color:var(--blue);font-weight:700;">Forgot password?</a>
+          </div>
+          <div style="margin-top:18px;">
+            <button class="btn primary full" type="submit">Login</button>
+            <p id="loginMessage" class="message" style="margin-top:10px;"></p>
+          </div>
+        </form>
+        <div id="forgotPanel" style="display:none;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <button onclick="closeForgotPassword()" style="border:0;background:var(--paper);border-radius:8px;padding:6px 10px;cursor:pointer;color:var(--muted);font-weight:700;">← Back</button>
+            <h3 style="margin:0;font-size:1.1rem;">Reset Password</h3>
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label for="resetEmail">Email Address</label>
+            <input id="resetEmail" type="email" placeholder="buyer@email.com" autocomplete="email">
+          </div>
+          <button class="btn primary full" onclick="submitForgotPassword()">Send Reset Instructions</button>
+          <p id="resetMessage" class="message" style="margin-top:10px;"></p>
+        </div>
+        <p class="switch-link" style="margin-top:20px;">No account yet? <a href="register.html">Create one here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img src="C Trade Logo.png" alt="Chozen Trade Logo">
+          <strong>Chozen Trade & Distribution<small>OPC — Philippines</small></strong>
+        </div>
+        <p class="footer-tagline">"From Trade to Transport — We Handle it All."</p>
+      </div>
+      <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li></ul></div>
+      <div class="footer-col"><h4>Account</h4><ul><li><a href="register.html">Create Account</a></li><li><a href="login.html">Login</a></li></ul></div>
+      <div class="footer-col"><h4>Categories</h4><ul><li><a href="products.html">General Trade</a></li><li><a href="products.html">Wholesale</a></li><li><a href="products.html">Industrial</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Trade & Distribution OPC. All rights reserved.</span>
+        <div class="footer-badges"><span class="footer-badge active">✓ SEC Registered</span><span class="footer-badge active">✓ DTI Registered</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

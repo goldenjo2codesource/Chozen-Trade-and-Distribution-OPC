@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Chozen Trade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="ct-topbar">
+      Part of the <strong>Chozen</strong> family of companies &nbsp;·&nbsp;
+      <a href="http://localhost:3001" target="_blank">Visit Chozen Resources Inc. →</a>
+    </div>
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+        <span class="brand-name">Chozen Trade & Distribution<small>Admin Panel</small></span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Site</a>
+        <a href="products.html">Products</a>
+        <a class="active" href="admin.html">Admin</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+        <a href="index.html">Site</a>
+        <a href="products.html">Products</a>
+        <a class="active" href="admin.html">Admin</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="dash-page" id="adminWrap">
+    <div class="dash-inner">
+      <div class="dash-header">
+        <div>
+          <p class="eyebrow">Admin Dashboard</p>
+          <h1>Chozen Trade Control Panel</h1>
+          <p>Manage products, orders, and buyers.</p>
+        </div>
+        <button class="btn ghost" onclick="logout()">Logout</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid" style="margin-bottom:28px;">
+        <div class="stat-box"><span class="stat-num" id="statTotalOrders">—</span><span class="stat-label">Total Orders</span></div>
+        <div class="stat-box gold"><span class="stat-num" id="statPendingOrders">—</span><span class="stat-label">Pending Orders</span></div>
+        <div class="stat-box green"><span class="stat-num" id="statCompletedOrders">—</span><span class="stat-label">Completed Orders</span></div>
+        <div class="stat-box"><span class="stat-num" id="statTotalUsers">—</span><span class="stat-label">Registered Buyers</span></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="orders">📋 Orders</button>
+        <button class="admin-tab-btn" data-tab="products">📦 Products</button>
+        <button class="admin-tab-btn" data-tab="users">👥 Buyers</button>
+      </div>
+
+      <!-- Orders Tab -->
+      <div class="admin-tab-panel active" id="tab-orders">
+        <div class="dash-section">
+          <h2>📋 All Orders &amp; Inquiries</h2>
+          <div id="adminOrdersList"><p style="color:var(--muted);">Loading…</p></div>
+        </div>
+      </div>
+
+      <!-- Products Tab -->
+      <div class="admin-tab-panel" id="tab-products">
+        <div class="dash-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--line);">
+            <h2 style="margin:0;border:0;padding:0;">📦 Products</h2>
+            <button class="btn primary sm" onclick="showProductForm(null)">+ Add Product</button>
+          </div>
+          <div id="adminProductsList"><p style="color:var(--muted);">Loading…</p></div>
+        </div>
+      </div>
+
+      <!-- Users Tab -->
+      <div class="admin-tab-panel" id="tab-users">
+        <div class="dash-section">
+          <h2>👥 Registered Buyers</h2>
+          <div id="adminUsersList"><p style="color:var(--muted);">Loading…</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Product Form Modal -->
+  <div class="modal" id="productFormModal" onclick="if(event.target===this)closeProductForm()">
+    <div class="modal-box" style="width:min(640px,100%);">
+      <div class="modal-header">
+        <h2>Product Details</h2>
+        <button class="modal-close" onclick="closeProductForm()">✕</button>
+      </div>
+      <form id="productForm" style="margin-top:16px;">
+        <div class="form-grid" style="gap:14px;">
+          <div class="form-group"><label>Product Title <span style="color:var(--red)">*</span></label><input type="text" name="title" required placeholder="e.g. Industrial Safety Gloves (Box of 12)"></div>
+          <div class="form-row-2">
+            <div class="form-group"><label>Category <span style="color:var(--red)">*</span></label><select name="category" required><option value="">Select category</option><option>Wholesale</option><option>Retail</option><option>Industrial</option><option>Consumer Goods</option><option>Agricultural</option><option>Construction</option><option>Health &amp; Wellness</option></select></div>
+            <div class="form-group"><label>Price <span style="color:var(--red)">*</span></label><input type="text" name="price" required placeholder="e.g. ₱480 / box"></div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group"><label>Stock Status</label><select name="stock"><option value="In Stock">In Stock</option><option value="Low Stock">Low Stock</option><option value="Out of Stock">Out of Stock</option><option value="Pre-order">Pre-order</option></select></div>
+            <div class="form-group"><label>Status</label><select name="status"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
+          </div>
+          <div class="form-group"><label>Description <span style="color:var(--red)">*</span></label><textarea name="description" required placeholder="Describe the product…" style="min-height:80px;"></textarea></div>
+          <div class="form-group"><label>Tags <span style="font-weight:400;color:var(--muted);">(comma-separated)</span></label><input type="text" name="tags" placeholder="e.g. Safety, PPE, Industrial"></div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <input type="checkbox" name="urgent" id="urgentCheck" style="width:18px;height:18px;accent-color:var(--red);">
+            <label for="urgentCheck" style="font-weight:700;font-size:.9rem;cursor:pointer;">🔥 Mark as Hot Item</label>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:20px;">
+          <button type="submit" class="btn primary" style="flex:1;">Save Product</button>
+          <button type="button" class="btn ghost" onclick="closeProductForm()" style="flex:1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+          <strong>Chozen Trade & Distribution<small>OPC — Philippines</small></strong>
+        </div>
+        <p class="footer-tagline">"From Trade to Transport — We Handle it All."</p>
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+            <span>
+              <a href="#" onclick="copyPhone('09692420721',this);return false;" title="Click to copy">0969-242-0721</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09474556583',this);return false;" title="Click to copy">0947-455-6583</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <a href="mailto:info@chozentrade.com">info@chozentrade.com</a>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Carmona City, Cavite, Philippines</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Site Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="admin.html">Admin Panel</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Manage</h4>
+        <ul>
+          <li><a href="admin.html">Orders</a></li>
+          <li><a href="admin.html">Products</a></li>
+          <li><a href="admin.html">Buyers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html">Homepage</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Trade & Distribution OPC. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge active">✓ SEC Registered</span>
+          <span class="footer-badge active">✓ DTI Registered</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

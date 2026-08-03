@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chozen Resources Inc. | Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .auth-wrap { max-width: 1100px; grid-template-columns: 340px 1fr; }
+    .auth-box  { padding: 32px 36px; }
+    .reg-section-title {
+      font-size: .72rem; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+      border-bottom: 1px solid var(--line); padding-bottom: 10px;
+      margin: 24px 0 18px;
+    }
+    .reg-section-title:first-of-type { margin-top: 4px; }
+    .progress-steps {
+      display: flex; gap: 0; margin-bottom: 28px; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+    }
+    .progress-step {
+      flex: 1; padding: 12px 8px; text-align: center; font-size: .75rem;
+      font-weight: 700; color: var(--muted); background: var(--paper);
+      border-right: 1px solid var(--line); transition: all .25s;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .progress-step:last-child { border-right: 0; }
+    .progress-step .step-icon { font-size: 1.1rem; }
+    .progress-step.active { background: var(--blue); color: #fff; }
+    .progress-step.done   { background: var(--green); color: #fff; }
+    .progress-step.done::after { content: " ✓"; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .step-nav { display: flex; gap: 12px; margin-top: 24px; }
+    .step-nav .btn { flex: 1; }
+    .confirm-box {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 12px; padding: 18px 20px; margin: 18px 0;
+    }
+    .confirm-box dl { display: grid; grid-template-columns: 140px 1fr; gap: 8px 12px; font-size: .88rem; }
+    .confirm-box dt { color: var(--muted); font-weight: 700; }
+    .confirm-box dd { color: var(--ink); font-weight: 600; margin: 0; }
+    .pw-strength { height: 4px; border-radius: 4px; margin-top: 6px; background: var(--line); overflow: hidden; }
+    .pw-strength-bar { height: 100%; width: 0; border-radius: 4px; transition: width .3s, background .3s; }
+    .pw-hint { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="CRI Logo.jpg" alt="CRI Logo">
+        <span class="brand-name">Chozen Resources Inc.<small>Manpower & Placement Agency</small></span>
+      </a>
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="headerSearch(event)">
+          <input class="header-search-input" type="search" id="headerSearchInput" placeholder="Search jobs, roles, locations…" autocomplete="off">
+          <button class="header-search-btn" type="submit" aria-label="Search">🔍</button>
+        </form>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="auth-page" style="align-items:flex-start;padding-top:0;">
+    <div class="auth-wrap" style="align-items:start;padding-top:40px;padding-bottom:48px;">
+
+      <!-- Side panel -->
+      <div class="auth-side" style="position:sticky;top:88px;">
+        <p class="eyebrow">New Applicant</p>
+        <h1 style="font-size:1.55rem;">Join Chozen Resources Inc.</h1>
+        <p>Fill out your complete details so we can properly verify and match you with the right job.</p>
+        <ul style="margin-top:20px;">
+          <li>Verified applicant profile</li>
+          <li>Apply to any open position</li>
+          <li>Fast 24-hour review</li>
+          <li>Get contacted by our team</li>
+          <li>100% free for applicants</li>
+        </ul>
+        <div style="margin-top:24px;padding:16px;background:rgba(255,255,255,.12);border-radius:12px;border:1px solid rgba(255,255,255,.2);">
+          <p style="font-size:.82rem;color:rgba(255,255,255,.8);margin:0;">
+            📋 Your information is kept private and only used for job placement purposes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form box -->
+      <div class="auth-box">
+        <h2 style="margin-bottom:4px;">Create Your Applicant Account</h2>
+        <p class="form-note">Complete all fields accurately — this becomes your applicant profile.</p>
+
+        <!-- Progress -->
+        <div class="progress-steps" id="progressSteps">
+          <div class="progress-step active" data-step="0"><span class="step-icon">👤</span>1 · Personal</div>
+          <div class="progress-step" data-step="1"><span class="step-icon">📞</span>2 · Contact</div>
+          <div class="progress-step" data-step="2"><span class="step-icon">🎓</span>3 · Background</div>
+          <div class="progress-step" data-step="3"><span class="step-icon">🔐</span>4 · Account</div>
+          <div class="progress-step" data-step="4"><span class="step-icon">✅</span>5 · Confirm</div>
+        </div>
+
+        <form id="registerForm" novalidate>
+
+          <!-- STEP 1 — Personal Info -->
+          <div class="form-step active" id="step-0">
+            <p class="reg-section-title">Personal Information</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="r-firstname">First Name <span style="color:var(--red)">*</span></label>
+                  <input id="r-firstname" type="text" name="firstname" required placeholder="Juan">
+                </div>
+                <div class="form-group">
+                  <label for="r-lastname">Last Name <span style="color:var(--red)">*</span></label>
+                  <input id="r-lastname" type="text" name="lastname" required placeholder="Dela Cruz">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="r-middlename">Middle Name <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
+                <input id="r-middlename" type="text" name="middlename" placeholder="Santos">
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="r-bday">Date of Birth <span style="color:var(--red)">*</span></label>
+                  <input id="r-bday" type="date" name="birthdate" required>
+                </div>
+                <div class="form-group">
+                  <label for="r-gender">Gender <span style="color:var(--red)">*</span></label>
+                  <select id="r-gender" name="gender" required>
+                    <option value="">Select gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="r-civil">Civil Status <span style="color:var(--red)">*</span></label>
+                  <select id="r-civil" name="civilStatus" required>
+                    <option value="">Select status</option>
+                    <option>Single</option>
+                    <option>Married</option>
+                    <option>Widowed</option>
+                    <option>Separated</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="r-nationality">Nationality <span style="color:var(--red)">*</span></label>
+                  <input id="r-nationality" type="text" name="nationality" required value="Filipino" placeholder="Filipino">
+                </div>
+              </div>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn primary" onclick="nextStep(0)">Next: Contact Info →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2 — Contact Info -->
+          <div class="form-step" id="step-1">
+            <p class="reg-section-title">Contact Information</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-group">
+                <label for="r-phone">Mobile Number <span style="color:var(--red)">*</span></label>
+                <input id="r-phone" type="tel" name="phone" required placeholder="09XXXXXXXXX" maxlength="11" pattern="^(09|\+639)\d{9}$" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)">
+                <span class="pw-hint">Format: 09XXXXXXXXX (11 digits)</span>
+              </div>
+              <div class="form-group">
+                <label for="r-altphone">Alternative / Landline <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
+                <input id="r-altphone" type="tel" name="altPhone" placeholder="02-XXXXXXXX or 09XXXXXXXXX">
+              </div>
+              <div class="form-group">
+                <label for="r-address">Complete Home Address <span style="color:var(--red)">*</span></label>
+                <input id="r-address" type="text" name="address" required placeholder="House No., Street, Barangay">
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="r-city">City / Municipality <span style="color:var(--red)">*</span></label>
+                  <input id="r-city" type="text" name="city" required placeholder="Quezon City">
+                </div>
+                <div class="form-group">
+                  <label for="r-province">Province / Region <span style="color:var(--red)">*</span></label>
+                  <input id="r-province" type="text" name="province" required placeholder="Metro Manila">
+                </div>
+              </div>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn ghost" onclick="prevStep(1)">← Back</button>
+              <button type="button" class="btn primary" onclick="nextStep(1)">Next: Background →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3 — Background -->
+          <div class="form-step" id="step-2">
+            <p class="reg-section-title">Educational &amp; Work Background</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-group">
+                <label for="r-edu">Highest Educational Attainment <span style="color:var(--red)">*</span></label>
+                <select id="r-edu" name="education" required>
+                  <option value="">Select education level</option>
+                  <option>Elementary Graduate</option>
+                  <option>High School Graduate</option>
+                  <option>Senior High School Graduate</option>
+                  <option>Vocational / TESDA Certificate</option>
+                  <option>College Level (Undergraduate)</option>
+                  <option>College Graduate</option>
+                  <option>Post Graduate</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="r-course">Course / Strand / Specialization <span style="font-weight:400;color:var(--muted);">(if applicable)</span></label>
+                <input id="r-course" type="text" name="course" placeholder="e.g. BSIT, Electrical Technology, HUMSS">
+              </div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="r-exp">Years of Work Experience <span style="color:var(--red)">*</span></label>
+                  <select id="r-exp" name="experience" required>
+                    <option value="">Select experience</option>
+                    <option value="0">No experience (Fresh)</option>
+                    <option value="1">Less than 1 year</option>
+                    <option value="2">1 – 2 years</option>
+                    <option value="3">3 – 5 years</option>
+                    <option value="5">5+ years</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="r-avail">Availability <span style="color:var(--red)">*</span></label>
+                  <select id="r-avail" name="availability" required>
+                    <option value="">Select availability</option>
+                    <option>Immediately available</option>
+                    <option>Available in 2 weeks</option>
+                    <option>Available in 1 month</option>
+                    <option>Currently employed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="r-skills">Key Skills <span style="color:var(--red)">*</span></label>
+                <input id="r-skills" type="text" name="skills" required placeholder="e.g. Forklift operation, MS Office, Customer service">
+                <span class="pw-hint">Separate skills with commas</span>
+              </div>
+              <div class="form-group">
+                <label for="r-govid">Valid Government ID Type <span style="color:var(--red)">*</span></label>
+                <select id="r-govid" name="govId" required>
+                  <option value="">Select ID type</option>
+                  <option>SSS ID</option>
+                  <option>PhilHealth ID</option>
+                  <option>Pag-IBIG ID</option>
+                  <option>National ID (PhilSys)</option>
+                  <option>Voter's ID</option>
+                  <option>Driver's License</option>
+                  <option>Passport</option>
+                  <option>UMID</option>
+                  <option>Barangay ID</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="r-govid-num">Government ID Number <span style="color:var(--red)">*</span></label>
+                <input id="r-govid-num" type="text" name="govIdNumber" required placeholder="Enter your ID number">
+              </div>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn ghost" onclick="prevStep(2)">← Back</button>
+              <button type="button" class="btn primary" onclick="nextStep(2)">Next: Account Setup →</button>
+            </div>
+          </div>
+
+          <!-- STEP 4 — Account credentials -->
+          <div class="form-step" id="step-3">
+            <p class="reg-section-title">Account Credentials</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-group">
+                <label for="r-email">Email Address <span style="color:var(--red)">*</span></label>
+                <input id="r-email" type="email" name="email" required placeholder="applicant@email.com" autocomplete="email">
+                <span class="pw-hint">Use an email you check regularly — we'll contact you here.</span>
+              </div>
+              <div class="form-group">
+                <label for="r-pw">Password <span style="color:var(--red)">*</span></label>
+                <input id="r-pw" type="password" name="password" minlength="8" required placeholder="Minimum 8 characters" autocomplete="new-password" oninput="checkPwStrength(this.value)">
+                <div class="pw-strength"><div class="pw-strength-bar" id="pwBar"></div></div>
+                <span class="pw-hint" id="pwHint">Use at least 8 characters with letters and numbers.</span>
+              </div>
+              <div class="form-group">
+                <label for="r-pw2">Confirm Password <span style="color:var(--red)">*</span></label>
+                <input id="r-pw2" type="password" name="password2" required placeholder="Re-enter your password" autocomplete="new-password">
+              </div>
+            </div>
+            <div class="step-nav">
+              <button type="button" class="btn ghost" onclick="prevStep(3)">← Back</button>
+              <button type="button" class="btn primary" onclick="nextStep(3)">Review & Confirm →</button>
+            </div>
+          </div>
+
+          <!-- STEP 5 — Confirm & Submit -->
+          <div class="form-step" id="step-4">
+            <p class="reg-section-title">Review Your Information</p>
+            <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px;">Please check everything before submitting. Go back to edit any section.</p>
+            <div class="confirm-box">
+              <dl id="confirmDetails"></dl>
+            </div>
+            <div style="padding:14px 18px;background:var(--gold-lt);border:1px solid #f0d090;border-radius:10px;font-size:.85rem;color:var(--ink);margin-bottom:18px;">
+              ⚠️ By submitting, you confirm that all information provided is <strong>true and accurate</strong>. Providing false information may result in disqualification.
+            </div>
+            <div class="step-nav" style="flex-direction:column;gap:10px;">
+              <button type="submit" class="btn primary full" style="font-size:.97rem;padding:14px;">
+                ✓ Submit Registration
+              </button>
+              <button type="button" class="btn ghost full" onclick="prevStep(4)">← Go Back and Edit</button>
+              <p id="registerMessage" class="message" style="text-align:center;"></p>
+            </div>
+          </div>
+
+        </form>
+        <p class="switch-link" style="margin-top:18px;">Already have an account? <a href="login.html">Login here</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img src="CRI Logo.jpg" alt="CRI Logo">
+          <strong>Chozen Resources Inc.<small>Manpower & Placement Agency</small></strong>
+        </div>
+        <p class="footer-tagline">Connecting skilled applicants with verified employers across the Philippines since 2010.</p>
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+            <span>
+              <a href="#" onclick="copyPhone('09692420721',this);return false;" title="Click to copy">0969-242-0721</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09474556583',this);return false;" title="Click to copy">0947-455-6583</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09182770167',this);return false;" title="Click to copy">0918-277-0167</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09289822985',this);return false;" title="Click to copy">0928-982-2985</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <span>
+              <a href="mailto:mutyamedalla.schozenresources@gmail.com">mutyamedalla.schozenresources@gmail.com</a><br>
+              <a href="mailto:kyle18.chozenresources@gmail.com">kyle18.chozenresources@gmail.com</a><br>
+              <a href="mailto:lucendo.chozenresources@gmail.com">lucendo.chozenresources@gmail.com</a><br>
+              <a href="mailto:chozenresources@gmail.com">chozenresources@gmail.com</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <a href="https://www.facebook.com/profile.php?id=61583097321288" target="_blank" rel="noopener">Chozen Resources Inc.</a>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="https://www.google.com/maps/search/3F+Quezca+Bldg+Paseo+Square+De+Carmona+Barangay+Maduya+Carmona+Cavite" target="_blank" rel="noopener">3F Quezca Bldg. Paseo Square De Carmona,<br>Brgy. Maduya, Carmona City, Cavite</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="jobs.html">Browse Jobs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Applicants</h4>
+        <ul>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="jobs.html">Apply Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="jobs.html">Manufacturing</a></li>
+          <li><a href="jobs.html">Construction</a></li>
+          <li><a href="jobs.html">Operations</a></li>
+          <li><a href="jobs.html">Admin & Office</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Resources Inc. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge active">✓ DOLE Registered</span>
+          <span class="footer-badge active">✓ SEC Registered</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

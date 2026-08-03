@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chozen Trade | Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="ct-topbar">
+      Part of the <strong>Chozen</strong> family of companies &nbsp;·&nbsp;
+      <a href="http://localhost:3001" target="_blank">Visit Chozen Resources Inc. →</a>
+    </div>
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+        <span class="brand-name">Chozen Trade & Distribution<small>From Trade to Transport — We Handle it All</small></span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div class="auth-page" style="align-items:flex-start;padding-top:0;">
+    <div class="auth-wrap" style="align-items:start;padding-top:40px;padding-bottom:48px;max-width:1100px;grid-template-columns:340px 1fr;">
+
+      <div class="auth-side" style="position:sticky;top:88px;">
+        <p class="eyebrow">New Buyer</p>
+        <h1 style="font-size:1.55rem;">Join Chozen Trade</h1>
+        <p>Fill out your details so we can verify your account and process your orders faster.</p>
+        <ul style="margin-top:20px;">
+          <li>Verified buyer profile</li>
+          <li>Place orders and inquiries</li>
+          <li>Fast 24-hour response</li>
+          <li>Track your order history</li>
+          <li>100% free for buyers</li>
+        </ul>
+        <div style="margin-top:24px;padding:16px;background:rgba(255,255,255,.12);border-radius:12px;border:1px solid rgba(255,255,255,.2);">
+          <p style="font-size:.82rem;color:rgba(255,255,255,.8);margin:0;">📋 Your information is kept private and only used for order processing.</p>
+        </div>
+      </div>
+
+      <div class="auth-box" style="padding:32px 36px;">
+        <h2 style="margin-bottom:4px;">Create Your Buyer Account</h2>
+        <p class="form-note">Complete all fields accurately — this becomes your buyer profile.</p>
+
+        <div class="progress-steps" id="progressSteps">
+          <div class="progress-step active" data-step="0"><span class="step-icon">👤</span>1 · Personal</div>
+          <div class="progress-step" data-step="1"><span class="step-icon">📞</span>2 · Contact</div>
+          <div class="progress-step" data-step="2"><span class="step-icon">🏢</span>3 · Business</div>
+          <div class="progress-step" data-step="3"><span class="step-icon">🔐</span>4 · Account</div>
+          <div class="progress-step" data-step="4"><span class="step-icon">✅</span>5 · Confirm</div>
+        </div>
+
+        <form id="registerForm" novalidate>
+
+          <!-- STEP 1 — Personal -->
+          <div class="form-step active" id="step-0">
+            <p class="reg-section-title">Personal Information</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-row-2">
+                <div class="form-group"><label for="r-firstname">First Name <span style="color:var(--red)">*</span></label><input id="r-firstname" type="text" name="firstname" required placeholder="Juan"></div>
+                <div class="form-group"><label for="r-lastname">Last Name <span style="color:var(--red)">*</span></label><input id="r-lastname" type="text" name="lastname" required placeholder="Dela Cruz"></div>
+              </div>
+              <div class="form-group"><label for="r-middlename">Middle Name <span style="font-weight:400;color:var(--muted);">(optional)</span></label><input id="r-middlename" type="text" name="middlename" placeholder="Santos"></div>
+              <div class="form-row-2">
+                <div class="form-group"><label for="r-bday">Date of Birth <span style="color:var(--red)">*</span></label><input id="r-bday" type="date" name="birthdate" required></div>
+                <div class="form-group"><label for="r-gender">Gender <span style="color:var(--red)">*</span></label><select id="r-gender" name="gender" required><option value="">Select gender</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div>
+              </div>
+              <div class="form-row-2">
+                <div class="form-group"><label for="r-civil">Civil Status <span style="color:var(--red)">*</span></label><select id="r-civil" name="civilStatus" required><option value="">Select status</option><option>Single</option><option>Married</option><option>Widowed</option><option>Separated</option></select></div>
+                <div class="form-group"><label for="r-nationality">Nationality <span style="color:var(--red)">*</span></label><input id="r-nationality" type="text" name="nationality" required value="Filipino" placeholder="Filipino"></div>
+              </div>
+            </div>
+            <div class="step-nav"><button type="button" class="btn primary" onclick="nextStep(0)">Next: Contact Info →</button></div>
+          </div>
+
+          <!-- STEP 2 — Contact -->
+          <div class="form-step" id="step-1">
+            <p class="reg-section-title">Contact Information</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-group"><label for="r-phone">Mobile Number <span style="color:var(--red)">*</span></label><input id="r-phone" type="tel" name="phone" required placeholder="09XXXXXXXXX" maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)"><span class="pw-hint">Format: 09XXXXXXXXX (11 digits)</span></div>
+              <div class="form-group"><label for="r-altphone">Alternative / Landline <span style="font-weight:400;color:var(--muted);">(optional)</span></label><input id="r-altphone" type="tel" name="altPhone" placeholder="02-XXXXXXXX or 09XXXXXXXXX"></div>
+              <div class="form-group"><label for="r-address">Complete Home Address <span style="color:var(--red)">*</span></label><input id="r-address" type="text" name="address" required placeholder="House No., Street, Barangay"></div>
+              <div class="form-row-2">
+                <div class="form-group"><label for="r-city">City / Municipality <span style="color:var(--red)">*</span></label><input id="r-city" type="text" name="city" required placeholder="Quezon City"></div>
+                <div class="form-group"><label for="r-province">Province / Region <span style="color:var(--red)">*</span></label><input id="r-province" type="text" name="province" required placeholder="Metro Manila"></div>
+              </div>
+            </div>
+            <div class="step-nav"><button type="button" class="btn ghost" onclick="prevStep(1)">← Back</button><button type="button" class="btn primary" onclick="nextStep(1)">Next: Business Info →</button></div>
+          </div>
+
+          <!-- STEP 3 — Business -->
+          <div class="form-step" id="step-2">
+            <p class="reg-section-title">Business Information</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-group"><label for="r-buyer-type">Buyer Type <span style="color:var(--red)">*</span></label><select id="r-buyer-type" name="buyerType" required><option value="">Select buyer type</option><option>Individual / Personal</option><option>Small Business</option><option>Medium Business</option><option>Large Enterprise</option><option>Reseller / Distributor</option></select></div>
+              <div class="form-group"><label for="r-business">Business / Company Name <span style="font-weight:400;color:var(--muted);">(if applicable)</span></label><input id="r-business" type="text" name="businessName" placeholder="e.g. ABC Trading Co."></div>
+              <div class="form-group"><label for="r-industry">Industry / Sector <span style="color:var(--red)">*</span></label><select id="r-industry" name="industry" required><option value="">Select industry</option><option>Retail</option><option>Wholesale / Distribution</option><option>Manufacturing</option><option>Construction</option><option>Food &amp; Beverage</option><option>Agriculture</option><option>Healthcare</option><option>Other</option></select></div>
+              <div class="form-group"><label for="r-volume">Estimated Monthly Order Volume <span style="color:var(--red)">*</span></label><select id="r-volume" name="orderVolume" required><option value="">Select volume</option><option>Below ₱10,000</option><option>₱10,000 – ₱50,000</option><option>₱50,000 – ₱200,000</option><option>₱200,000 – ₱1,000,000</option><option>Above ₱1,000,000</option></select></div>
+              <div class="form-group"><label for="r-govid">Valid Government ID Type <span style="color:var(--red)">*</span></label><select id="r-govid" name="govId" required><option value="">Select ID type</option><option>SSS ID</option><option>PhilHealth ID</option><option>Pag-IBIG ID</option><option>National ID (PhilSys)</option><option>Voter's ID</option><option>Driver's License</option><option>Passport</option><option>UMID</option><option>TIN ID</option></select></div>
+              <div class="form-group"><label for="r-govid-num">Government ID Number <span style="color:var(--red)">*</span></label><input id="r-govid-num" type="text" name="govIdNumber" required placeholder="Enter your ID number"></div>
+            </div>
+            <div class="step-nav"><button type="button" class="btn ghost" onclick="prevStep(2)">← Back</button><button type="button" class="btn primary" onclick="nextStep(2)">Next: Account Setup →</button></div>
+          </div>
+
+          <!-- STEP 4 — Account -->
+          <div class="form-step" id="step-3">
+            <p class="reg-section-title">Account Credentials</p>
+            <div class="form-grid" style="gap:14px;">
+              <div class="form-group"><label for="r-email">Email Address <span style="color:var(--red)">*</span></label><input id="r-email" type="email" name="email" required placeholder="buyer@email.com" autocomplete="email"><span class="pw-hint">Use an email you check regularly — we'll contact you here.</span></div>
+              <div class="form-group"><label for="r-pw">Password <span style="color:var(--red)">*</span></label><input id="r-pw" type="password" name="password" minlength="8" required placeholder="Minimum 8 characters" autocomplete="new-password" oninput="checkPwStrength(this.value)"><div class="pw-strength"><div class="pw-strength-bar" id="pwBar"></div></div><span class="pw-hint" id="pwHint">Use at least 8 characters with letters and numbers.</span></div>
+              <div class="form-group"><label for="r-pw2">Confirm Password <span style="color:var(--red)">*</span></label><input id="r-pw2" type="password" name="password2" required placeholder="Re-enter your password" autocomplete="new-password"></div>
+            </div>
+            <div class="step-nav"><button type="button" class="btn ghost" onclick="prevStep(3)">← Back</button><button type="button" class="btn primary" onclick="nextStep(3)">Review &amp; Confirm →</button></div>
+          </div>
+
+          <!-- STEP 5 — Confirm -->
+          <div class="form-step" id="step-4">
+            <p class="reg-section-title">Review Your Information</p>
+            <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px;">Please check everything before submitting. Go back to edit any section.</p>
+            <div class="confirm-box"><dl id="confirmDetails"></dl></div>
+            <div style="padding:14px 18px;background:var(--gold-lt);border:1px solid #f0d090;border-radius:10px;font-size:.85rem;color:var(--ink);margin-bottom:18px;">
+              ⚠️ By submitting, you confirm that all information provided is <strong>true and accurate</strong>.
+            </div>
+            <div class="step-nav" style="flex-direction:column;gap:10px;">
+              <button type="submit" class="btn primary full" style="font-size:.97rem;padding:14px;">✓ Submit Registration</button>
+              <button type="button" class="btn ghost full" onclick="prevStep(4)">← Go Back and Edit</button>
+              <p id="registerMessage" class="message" style="text-align:center;"></p>
+            </div>
+          </div>
+
+        </form>
+        <p class="switch-link" style="margin-top:18px;">Already have an account? <a href="login.html">Login here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+          <strong>Chozen Trade & Distribution<small>OPC — Philippines</small></strong>
+        </div>
+        <p class="footer-tagline">"From Trade to Transport — We Handle it All."</p>
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+            <span>
+              <a href="#" onclick="copyPhone('09692420721',this);return false;" title="Click to copy">0969-242-0721</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09474556583',this);return false;" title="Click to copy">0947-455-6583</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <a href="mailto:info@chozentrade.com">info@chozentrade.com</a>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Carmona City, Cavite, Philippines</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="products.html">General Trade</a></li>
+          <li><a href="products.html">Wholesale</a></li>
+          <li><a href="products.html">Retail</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Trade & Distribution OPC. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge active">✓ SEC Registered</span>
+          <span class="footer-badge active">✓ DTI Registered</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

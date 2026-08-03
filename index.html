@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chozen Trade & Distribution | From Trade to Transport — We Handle it All</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="ct-topbar">
+      Part of the <strong>Chozen</strong> family of companies &nbsp;·&nbsp;
+      <a href="http://localhost:3001" target="_blank">Visit Chozen Resources Inc. →</a>
+    </div>
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="C Trade Logo.png" alt="Chozen Trade Logo">
+        <span class="brand-name">Chozen Trade & Distribution<small>From Trade to Transport — We Handle it All</small></span>
+      </a>
+      <div class="header-search">
+        <form class="header-search-form" onsubmit="headerSearch(event)">
+          <input class="header-search-input" type="search" id="headerSearchInput" placeholder="Search products, services…" autocomplete="off">
+          <button class="header-search-btn" type="submit" aria-label="Search">🔍</button>
+        </form>
+      </div>
+      <nav class="site-nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="dashboard.html" data-dash-link style="display:none;">Dashboard</a>
+        <a href="login.html" data-auth-link>Login</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Trade & Distribution — Philippines</p>
+        <h1>From Trade to Transport.<br>We Handle it All.</h1>
+        <p class="lead">Chozen Trade & Distribution OPC connects global suppliers with local markets — reliable sourcing, efficient logistics, and tailored supply chain solutions for every industry.</p>
+        <div class="hero-actions">
+          <a class="btn ct-btn-amber" href="products.html">Browse Products</a>
+          <a class="btn ghost" href="register.html">Create Free Account</a>
+        </div>
+        <p style="margin-top:14px;font-size:.83rem;color:rgba(255,255,255,.55);">Already have an account? <a href="login.html" style="color:rgba(255,255,255,.8);font-weight:700;text-decoration:underline;">Login here</a></p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="num">500+</span>
+          <span class="label">Products available</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">24h</span>
+          <span class="label">Fast inquiry response</span>
+        </div>
+        <div class="stat-card">
+          <span class="num">10+</span>
+          <span class="label">Industries served</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Offer -->
+  <section class="section bg-white">
+    <div class="section-inner">
+      <div class="section-hd">
+        <p class="eyebrow">What We Offer</p>
+        <h2>Complete trade and logistics solutions</h2>
+        <p>We deliver not just products, but complete solutions that add value to your business.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="feature-icon blue">🌐</div>
+          <h3>Global Sourcing</h3>
+          <p>We connect you with verified global suppliers across construction, manufacturing, retail, and general commodities.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon green">🚚</div>
+          <h3>Reliable Distribution</h3>
+          <p>Efficient logistics and supply chain solutions tailored to your operational needs — delivered on time, every time.</p>
+        </div>
+        <div class="card">
+          <div class="feature-icon gold">🔧</div>
+          <h3>Facilities Maintenance</h3>
+          <p>Preventive maintenance, electrical systems, aircon, building renovation, solar lights, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section bg-paper">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+        <div>
+          <p class="eyebrow">How It Works</p>
+          <h2>Order in three simple steps</h2>
+          <p style="margin-bottom:28px;">No complicated process — find a product, create your account, and submit your inquiry. Our team handles the rest.</p>
+          <a class="btn primary" href="products.html">See Available Products →</a>
+        </div>
+        <div class="steps-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>Choose a product or service</strong><span>Browse our catalog and pick what fits your business needs.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>Login or Register</strong><span>A quick account login appears when you click Inquire or Order.</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>Submit Your Inquiry</strong><span>Fill out the short form and we'll get back to you within 24 hours.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="section bg-white">
+    <div class="section-inner">
+      <div class="section-hd">
+        <p class="eyebrow">Industries We Serve</p>
+        <h2>Built for every sector</h2>
+        <p>Our operations span multiple industries — we provide products and logistics solutions wherever they're needed.</p>
+      </div>
+      <div class="grid-3">
+        <a href="products.html" class="ct-cat-card">
+          <span class="ct-cat-icon">�️</span>
+          <strong>Construction</strong>
+          <span>Building materials & hardware</span>
+        </a>
+        <a href="products.html" class="ct-cat-card">
+          <span class="ct-cat-icon">🏭</span>
+          <strong>Manufacturing</strong>
+          <span>Industrial supplies & equipment</span>
+        </a>
+        <a href="products.html" class="ct-cat-card">
+          <span class="ct-cat-icon">🏨</span>
+          <strong>Hotel & Facilities</strong>
+          <span>Maintenance, MEPZ & more</span>
+        </a>
+        <a href="products.html" class="ct-cat-card">
+          <span class="ct-cat-icon">🛒</span>
+          <strong>Retail</strong>
+          <span>General merchandise & goods</span>
+        </a>
+        <a href="products.html" class="ct-cat-card">
+          <span class="ct-cat-icon">☀️</span>
+          <strong>Solar & Electrical</strong>
+          <span>Solar lights, electrical systems</span>
+        </a>
+        <a href="products.html" class="ct-cat-card">
+          <span class="ct-cat-icon">�</span>
+          <strong>General Commodities</strong>
+          <span>Wholesale & distribution</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-paper">
+    <div class="section-inner">
+      <div class="cta-banner">
+        <div>
+          <h2>Ready to work with us?</h2>
+          <p>Browse our products and services, and place an inquiry today. We respond within 24 hours.</p>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn ct-btn-amber" href="products.html">Browse Products</a>
+          <a class="btn ghost" href="register.html">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-row">
+          <img src="C Trade Logo.png" alt="Chozen Trade Logo">
+          <strong>Chozen Trade & Distribution<small>OPC — Philippines</small></strong>
+        </div>
+        <p class="footer-tagline">"From Trade to Transport — We Handle it All."</p>
+        <div class="footer-contact">
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.13 1 .37 1.97.72 2.9a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.18-1.18a2 2 0 012.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0122 16.92z"/></svg>
+            <span>
+              <a href="#" onclick="copyPhone('09692420721',this);return false;">0969-242-0721</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09474556583',this);return false;">0947-455-6583</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09182770167',this);return false;">0918-277-0167</a><span class="sep">|</span>
+              <a href="#" onclick="copyPhone('09289822985',this);return false;">0928-982-2985</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <span>
+              <a href="mailto:chozentradepaseo@gmail.com">chozentradepaseo@gmail.com</a><br>
+              <a href="mailto:matoswenjielyn1.chozentrade@gmail.com">matoswenjielyn1.chozentrade@gmail.com</a>
+            </span>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <a href="https://www.facebook.com/profile.php?id=61583097321288" target="_blank" rel="noopener">Chozen Cañizares</a>
+          </div>
+          <div class="footer-contact-row">
+            <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="https://www.google.com/maps/search/3rd+Floor+Quezca+Bldg+Paseo+Square+de+Carmona+Barangay+Maduya+Carmona+Philippines" target="_blank" rel="noopener">3rd Floor Quezca Bldg. Paseo Square de Carmona,<br>Brgy. Maduya, Carmona, Philippines 4116</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="products.html">Order Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="products.html">Construction</a></li>
+          <li><a href="products.html">Manufacturing</a></li>
+          <li><a href="products.html">Hotel & Facilities</a></li>
+          <li><a href="products.html">General Commodities</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <span class="footer-copy">© 2026 Chozen Trade & Distribution OPC. All rights reserved.</span>
+        <div class="footer-badges">
+          <span class="footer-badge active">✓ SEC Registered</span>
+          <span class="footer-badge active">✓ DTI Registered</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
