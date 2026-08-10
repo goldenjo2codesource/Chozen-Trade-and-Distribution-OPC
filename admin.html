@@ -102,6 +102,8 @@
             <div class="form-group"><label>Status</label><select name="status"><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
           </div>
           <div class="form-group"><label>Description <span style="color:var(--red)">*</span></label><textarea name="description" required placeholder="Describe the product…" style="min-height:80px;"></textarea></div>
+          <div class="form-group"><label>Product Image URL <span style="font-weight:400;color:var(--muted);">(optional)</span></label><input type="url" name="image" placeholder="https://example.com/image.jpg"></div>
+          <div id="imagePreviewWrap" style="display:none;margin-top:-6px;"><img id="imagePreview" src="" alt="Preview" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px;border:1px solid var(--line);"></div>
           <div class="form-group"><label>Tags <span style="font-weight:400;color:var(--muted);">(comma-separated)</span></label><input type="text" name="tags" placeholder="e.g. Safety, PPE, Industrial"></div>
           <div style="display:flex;align-items:center;gap:10px;">
             <input type="checkbox" name="urgent" id="urgentCheck" style="width:18px;height:18px;accent-color:var(--red);">

@@ -93,7 +93,11 @@ function displayProducts() {
   filtered.forEach(p => {
     const catClass = p.category === 'Wholesale' ? 'pill wholesale' : p.category === 'Retail' ? 'pill retail' : 'pill';
     const badge = p.urgent ? '<span class="pill" style="background:#fff0f0;color:#c0392b;margin-left:6px;">🔥 Hot Item</span>' : '';
+    const imgHtml = p.image
+      ? `<div class="product-card-img"><img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'product-card-img-placeholder\\'><span>📦</span>No Image</div>'"></div>`
+      : `<div class="product-card-img"><div class="product-card-img-placeholder"><span>📦</span>No Image</div></div>`;
     html += `<article class="product-card">
+      ${imgHtml}
       <div class="product-card-top"><span class="${catClass}">${p.category || 'General'}</span>${badge}<span class="stock-tag">${p.stock === 'In Stock' ? '✅' : '⚠️'} ${p.stock || 'Check Availability'}</span></div>
       <h2>${p.title}</h2>
       <p>${p.description}</p>
@@ -490,12 +494,24 @@ function showProductForm(product) {
     form.querySelector('[name=description]').value = product.description || '';
     form.querySelector('[name=tags]').value    = (product.tags||[]).join(', ');
     form.querySelector('[name=status]').value  = product.status || 'active';
+    const imgInput = form.querySelector('[name=image]');
+    if (imgInput) imgInput.value = product.image || '';
+    updateImagePreview(product.image || '');
     form.dataset.editId = product.id;
   } else {
     form.reset();
+    updateImagePreview('');
     delete form.dataset.editId;
   }
   modal.classList.add('show');
+}
+
+function updateImagePreview(url) {
+  const wrap = document.getElementById('imagePreviewWrap');
+  const img  = document.getElementById('imagePreview');
+  if (!wrap || !img) return;
+  if (url) { img.src = url; wrap.style.display = 'block'; }
+  else { wrap.style.display = 'none'; img.src = ''; }
 }
 
 function closeProductForm() {
@@ -514,6 +530,13 @@ function deleteProduct(id) {
 
 function setupProductForm() {
   const form = document.getElementById('productForm'); if (!form) return;
+
+  // Live image preview
+  const imgInput = form.querySelector('[name=image]');
+  if (imgInput) {
+    imgInput.addEventListener('input', () => updateImagePreview(imgInput.value.trim()));
+  }
+
   form.onsubmit = function(e) {
     e.preventDefault();
     const btn = form.querySelector('button[type=submit]');
